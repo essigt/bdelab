@@ -116,6 +116,6 @@ Schauen sie sich den Quelltext von `CountFacts` an. Dort sehen Sie die Konfigura
 
 ##### Aufgabe 2.1.2: Untersuchen sie den Pageview Index Job
 
-- Wie lange ist der Job gelaufen?
-- Wieviele Mapper sind zum Einsagz gekommen und wie lange haben diese im Schnitt gearbeitet?
-- Wieviele Daten haben Mapper und Reducer jeweils erzeugt?
+- Wie lange ist der Job gelaufen? -> 13 Sekunden(mit  5 Reducern)
+- Wieviele Mapper sind zum Einsagz gekommen und wie lange haben diese im Schnitt gearbeitet? 7 Mapper, avg. 7sec
+- Wieviele Daten haben Mapper und Reducer jeweils erzeugt? Reducer: 5 Pails(a ~200k) Mapper: 1GB/7

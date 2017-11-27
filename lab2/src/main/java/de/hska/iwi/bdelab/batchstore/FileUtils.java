@@ -16,7 +16,7 @@ public class FileUtils {
 
     // change this to your IZ account ID
     // make sure an operator created your hdfs home folder
-    private static final String HDFS_USER = "zich0001";
+    private static final String HDFS_USER = "esti1012";
 
     private static final String NEW_PAIL = "pageviews-new";
     private static final String MASTER_PAIL = "pageviews-master";
