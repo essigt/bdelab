@@ -7,6 +7,7 @@ import de.hska.iwi.bdelab.schema.Pedigree;
 import de.hska.iwi.bdelab.schema.UserID;
 import de.hska.iwi.bdelab.schema.UserProperty;
 import de.hska.iwi.bdelab.schema.UserPropertyValue;
+import java.lang.Math;
 
 public class FriendFacts {
 
@@ -24,13 +25,13 @@ public class FriendFacts {
 	private static Pedigree p2 = new Pedigree();
 	private static Pedigree p3 = new Pedigree();
 
-	static Data d1 = new Data();
-	static Data d2 = new Data();
-	static Data d3 = new Data();
+	public static Data d1 = new Data();
+	public static Data d2 = new Data();
+	public static Data d3 = new Data();
 
 	static {
-		uid1.set_user_id("123");
-		uid2.set_user_id("321");
+		uid1.set_user_id("1");
+		uid2.set_user_id("2");
 		upv1.set_full_name("alice");
 		upv2.set_full_name("bob");
 		up1.set_property(upv1);
