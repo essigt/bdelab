@@ -25,30 +25,30 @@ public class Batchloader {
 	private final String DATA_FILE = "pageviews.txt";
 	private Pail<Data>.TypedRecordOutputStream tmpWriteStream;
 
-	// ...
+    // ...
 
-	private void readPageviewsAsStream() {
-		try {
-			URI uri = Batchloader.class.getClassLoader().getResource(DATA_FILE).toURI();
-			try (Stream<String> stream = Files.lines(Paths.get(uri))) {
-				stream.forEach(line -> writeToPail(getDatafromString(line)));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} catch (URISyntaxException e1) {
-			e1.printStackTrace();
-		}
-	}
+    private void readPageviewsAsStream() {
+        try {
+            URI uri = Batchloader.class.getClassLoader().getResource("pageviews.txt").toURI();
+            try (Stream<String> stream = Files.lines(Paths.get(uri))) {
+                stream.forEach(line -> writeToPail(getDatafromString(line)));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (URISyntaxException e1) {
+            e1.printStackTrace();
+        }
+    }
 
 	private Data getDatafromString(String pageview) {
 		Data result = new Data();
 
-		StringTokenizer tokenizer = new StringTokenizer(pageview);
-		String ip = tokenizer.nextToken();
-		String url = tokenizer.nextToken();
-		String time = tokenizer.nextToken();
+        StringTokenizer tokenizer = new StringTokenizer(pageview);
+        String ip = tokenizer.nextToken();
+        String url = tokenizer.nextToken();
+        String time = tokenizer.nextToken();
 
-		System.out.println(ip + " " + url + " " + time);
+        System.out.println(ip + " " + url + " " + time);
 
 		// ... create Data		                                
 		DataUnit dataUnit = new DataUnit();
@@ -86,15 +86,11 @@ public class Batchloader {
 	}
 	
 
-	private void importPageviews() {
-		boolean LOCAL = false;
+    private void importPageviews() {
 
-		try {
-			FileSystem fs = FileUtils.getFs(LOCAL);
-			// temporary pail goes to tmp folder
-			String newPath = FileUtils.getTmpPath(fs, FileUtils.NEW_PAIL, true, LOCAL);
-			// master pail goes to permanent fact store
-			String masterPath = FileUtils.getPath(fs, FileUtils.FACT_BASE, FileUtils.MASTER_PAIL, false, LOCAL);
+        // change this to "true" if you want to work
+        // on the local machines' file system instead of hdfs
+        boolean LOCAL = false;
 
 
 			Pail<Data> tmpPail = Pail.create(fs, newPath, PailFormatFactory.getDefaultCopy().setStructure(new DataPailStructure()));
@@ -111,13 +107,22 @@ public class Batchloader {
 			masterPail.absorb(tmpPail);
 			masterPail.consolidate();
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+            // set up new pail and a stream
+            // ...
 
-	public static void main(String[] args) {
-		Batchloader loader = new Batchloader();
-		loader.importPageviews();
-	}
+            // write facts to new pail
+            readPageviewsAsStream();
+
+            // set up master pail and absorb new pail
+            // ...
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        Batchloader loader = new Batchloader();
+        loader.importPageviews();
+    }
 }

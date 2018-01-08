@@ -8,7 +8,7 @@ if [ -z "${HADOOP_SH}" ]
     then
         if [ -e "${HADOOP_HOME}/bin/hadoop" ]
             then
-                HADOOP_SH="${HADOOP_HOME}/bin/hadoop.sh"
+                HADOOP_SH="${HADOOP_HOME}/bin/hadoop"
                 echo "Using default Hadoop script."
             else
                 echo "No hadoop script found."
@@ -27,4 +27,4 @@ if [ -z "${LIB}" ]
         exit 2
 fi
 
-$HADOOP_SH jar $LIB de.hska.iwi.bdelab.batchstore.BatchLoader $1 $2 $3 $4
+$HADOOP_SH jar $LIB de.hska.iwi.bdelab.batchstore.BatchLoader $1 $2 $3 $4 $5 $6 $7 $8

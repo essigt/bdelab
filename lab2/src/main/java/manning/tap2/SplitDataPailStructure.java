@@ -1,4 +1,4 @@
-package manning.tap;
+package manning.tap2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,8 +12,8 @@ import org.apache.thrift.meta_data.FieldMetaData;
 import org.apache.thrift.meta_data.FieldValueMetaData;
 import org.apache.thrift.meta_data.StructMetaData;
 
-import de.hska.iwi.bdelab.schema.Data;
-import de.hska.iwi.bdelab.schema.DataUnit;
+import de.hska.iwi.bdelab.schema2.Data;
+import de.hska.iwi.bdelab.schema2.DataUnit;
 
 
 public class SplitDataPailStructure extends DataPailStructure {

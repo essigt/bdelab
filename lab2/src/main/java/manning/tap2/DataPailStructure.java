@@ -1,6 +1,7 @@
-package manning.tap;
+package manning.tap2;
 
-import de.hska.iwi.bdelab.schema.Data;
+import de.hska.iwi.bdelab.schema2.Data;
+import manning.tap.ThriftPailStructure;
 
 public class DataPailStructure extends ThriftPailStructure<Data> {
   @Override
